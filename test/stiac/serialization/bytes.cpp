@@ -17,11 +17,11 @@ using namespace dci;
 TEST(stiac, bytes)
 {
     /////////0/////////1/////////2/////////3/////////4/////////5/////////6/////////7
-    hereThere2( Bytes()                  ,[](const auto& a, const auto& b){EXPECT_EQ(a, b);});
-    hereThere2( Bytes("asdf")            ,[](const auto& a, const auto& b){EXPECT_EQ(a, b);});
-    hereThere2( Bytes("asdf----fdsa")    ,[](const auto& a, const auto& b){EXPECT_EQ(a, b);});
+    hereThere2( Bytes{}                  ,[](const auto& a, const auto& b){EXPECT_EQ(a, b);});
+    hereThere2( Bytes{"asdf"}            ,[](const auto& a, const auto& b){EXPECT_EQ(a, b);});
+    hereThere2( Bytes{"asdf----fdsa"}    ,[](const auto& a, const auto& b){EXPECT_EQ(a, b);});
 
-    for(std::size_t i(0); i<20; ++i)
+    for(std::size_t i{}; i<20; ++i)
     {
         Bytes b;
         b.end().write("012345");

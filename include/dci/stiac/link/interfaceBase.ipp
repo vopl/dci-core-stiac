@@ -82,7 +82,7 @@ namespace dci::stiac::link
     BasePtr InterfaceBase<C, s>::factory1(idl::Interface&& interface)
     {
         dbgAssert(interface);
-        return BasePtr(new  Impl<C<s>>(std::move(interface)));
+        return BasePtr(new  Impl<C<s>>{std::move(interface)});
     }
 
     /////////0/////////1/////////2/////////3/////////4/////////5/////////6/////////7
@@ -93,7 +93,7 @@ namespace dci::stiac::link
         C<s> i;
         i.init();
         interface = i.opposite();
-        return BasePtr(new  Impl<C<s>>(std::move(i)));
+        return BasePtr(new  Impl<C<s>>{std::move(i)});
     }
 
     /////////0/////////1/////////2/////////3/////////4/////////5/////////6/////////7

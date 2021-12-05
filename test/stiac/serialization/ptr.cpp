@@ -18,13 +18,13 @@ TEST(stiac, ptr)
 {
     /////////0/////////1/////////2/////////3/////////4/////////5/////////6/////////7
     hereThere2( Ptr<char>({}),            [](const Ptr<char>&  , const Ptr<char>& b){EXPECT_FALSE(b);});
-    hereThere2( Ptr<char>(new char('x')), [](const Ptr<char>& a, const Ptr<char>& b){EXPECT_EQ(*a, *b);});
+    hereThere2( Ptr<char>(new char{'x'}), [](const Ptr<char>& a, const Ptr<char>& b){EXPECT_EQ(*a, *b);});
 
     /////////0/////////1/////////2/////////3/////////4/////////5/////////6/////////7
     {
-        Ptr<char>   p1(new char('x'));
-        Ptr<String> p2(new String("y"));
-        Ptr<int>    p3(new int(220));
+        Ptr<char>   p1(new char{'x'});
+        Ptr<String> p2(new String{"y"});
+        Ptr<int>    p3(new int{220});
         hereThere2( Tuple{p1, p1, p2, p1, p2, p2, p3}, [](const auto& a, const auto& b)
         {
             EXPECT_EQ(*std::get<0>(a), *std::get<0>(b));

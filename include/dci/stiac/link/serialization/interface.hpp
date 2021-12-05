@@ -141,7 +141,7 @@ namespace dci::stiac::link::serialization
     template <template <idl::interface::Side> class C, idl::interface::Side s>
     void save(auto& ar, const C<s>& v) requires(idl::contract::MdDescriptor<C>::_declared && Impl<C<s>>::_declared)
     {
-        LocalId localId = v ? ar.emplaceLink(BasePtr(new  Impl<C<s>>(v))) : LocalId::null;
+        LocalId localId = v ? ar.emplaceLink(BasePtr(new  Impl<C<s>>{v})) : LocalId::null;
         ar << localId;
     }
 
@@ -149,7 +149,7 @@ namespace dci::stiac::link::serialization
     template <template <idl::interface::Side> class C, idl::interface::Side s>
     void save(auto& ar, C<s>&& v) requires(idl::contract::MdDescriptor<C>::_declared && Impl<C<s>>::_declared)
     {
-        LocalId localId =  v ? ar.emplaceLink(BasePtr(new  Impl<C<s>>(std::move(v)))) : LocalId::null;
+        LocalId localId =  v ? ar.emplaceLink(BasePtr(new  Impl<C<s>>{std::move(v)})) : LocalId::null;
         ar << localId;
     }
 
@@ -167,7 +167,7 @@ namespace dci::stiac::link::serialization
                 v.init();
             }
 
-            (void)ar.emplaceLink(BasePtr(new  Impl<C<invert(s)>>(static_cast<const C<invert(s)>&>(v))), remoteId);
+            (void)ar.emplaceLink(BasePtr(new  Impl<C<invert(s)>>{static_cast<const C<invert(s)>&>(v)}), remoteId);
         }
         else
         {

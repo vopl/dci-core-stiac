@@ -17,7 +17,7 @@ namespace dci::stiac::link::serialization
     void save(auto& ar, cmt::Promise<T>&& v)
     {
         dbgAssert(v);
-        ar << ar.emplaceLink(BasePtr(new  Impl<cmt::Promise<T>>(std::move(v))));
+        ar << ar.emplaceLink(BasePtr(new  Impl<cmt::Promise<T>>{std::move(v)}));
     }
 
     /////////0/////////1/////////2/////////3/////////4/////////5/////////6/////////7
@@ -28,7 +28,7 @@ namespace dci::stiac::link::serialization
         RemoteId remoteId;
         ar >> remoteId;
 
-        BasePtr rLink(new  Impl<cmt::Promise<T>>(std::move(v)));
+        BasePtr rLink(new  Impl<cmt::Promise<T>>{std::move(v)});
         if(!ar.emplaceLink(rLink, remoteId))
         {
             ar.fail("bad link");
