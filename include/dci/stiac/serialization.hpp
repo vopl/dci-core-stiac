@@ -23,6 +23,7 @@
 #include "serialization/stdVariant.hpp"
 #include "serialization/stdVector.hpp"
 #include "serialization/ptr.hpp"
+#include "serialization/opt.hpp"
 #include "serialization/tuple.hpp"
 #include "serialization/tuid.hpp"
 #include "serialization/clid.hpp"
