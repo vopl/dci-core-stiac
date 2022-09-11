@@ -9,6 +9,7 @@
 
 #include "serialization/fixEndian.hpp"
 
+#include "serialization/none.hpp"
 #include "serialization/integral.hpp"
 #include "serialization/smallUnsigned.hpp"
 #include "serialization/smallSigned.hpp"
