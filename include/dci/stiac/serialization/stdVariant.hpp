@@ -68,9 +68,7 @@ namespace dci::stiac::serialization
         {
             if(wantedIndex == currentIndex)
             {
-                std::variant_alternative_t<currentIndex, std::variant<T...>> member;
-                ar >> member;
-                v.template emplace<currentIndex>(std::move(member));
+                ar >> v.template emplace<currentIndex>();
                 return;
             }
 
